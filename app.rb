@@ -14,6 +14,7 @@ class RestfulControllerApp < Sinatra::Base
   # GET "/books/new" - Give us a form to fill out details of a new book
   get "/books/new" do
     # some code here
+    erb :"new"
   end
 
   # CREATE - where the new form POSTs to, it does the actual creating
@@ -27,7 +28,7 @@ class RestfulControllerApp < Sinatra::Base
   get "/books/:id" do
     # some code here
     @books = ["Sorcerors's Stone", "Chamber of Secrets", "Prisoner of Azkaban", "Goblet of Fire"]
-    @books[params[:id].to_i -1]
+    @books = @books[params[:id].to_i-1]
   end
 
   # EDIT - like NEW, this just gives us a form that will PUT/PATCH our changes
