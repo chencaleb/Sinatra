@@ -1,9 +1,13 @@
 class RestfulControllerApp < Sinatra::Base
+  get "/" do
+    erb :"index"
+  end
 
   # INDEX - like index.html, a list of books
   # GET "/books" - Gets all the books we have
   get "/books" do
-    # some code here
+    @books = ["Sorcerors's Stone", "Chamber of Secrets", "Prisoner of Azkaban", "Goblet of Fire"]
+    erb :"books"
   end
 
   # NEW - a page that gives us a form to make a new book
@@ -22,6 +26,8 @@ class RestfulControllerApp < Sinatra::Base
   # GET "/books/3" - Just get one specific book (that already exists)
   get "/books/:id" do
     # some code here
+    @books = ["Sorcerors's Stone", "Chamber of Secrets", "Prisoner of Azkaban", "Goblet of Fire"]
+    @books[params[:id].to_i -1]
   end
 
   # EDIT - like NEW, this just gives us a form that will PUT/PATCH our changes
